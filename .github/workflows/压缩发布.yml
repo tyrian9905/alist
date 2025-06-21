@@ -20,7 +20,7 @@ jobs:
       - name: 检查更新
         id: getversion
         run: |
-          ver=`curl https://api.github.com/repos/AlistGo/alist/releases/latest | jq -r '.tag_name'`
+          ver=`curl https://api.github.com/repos/OpenListTeam/OpenList/releases/latest | jq -r '.tag_name'`
           cver=`curl https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name'`
           echo "ver=${ver}" >> $GITHUB_OUTPUT
           echo "cver=${cver}" >> $GITHUB_OUTPUT
@@ -45,7 +45,7 @@ jobs:
           rm -rf /opt/st
           git clone https://github.com/lmq8267/cloudflared.git /opt/st
           cd /opt/st
-          tag=`curl https://api.github.com/repos/AlistGo/alist/releases/latest | grep 'tag_name' | cut -d\" -f4`
+          tag=`curl https://api.github.com/repos/OpenListTeam/OpenList/releases/latest | grep 'tag_name' | cut -d\" -f4`
           echo tag=$tag
           [ -z "$tag" ] && tag=${{ needs.check.outputs.ver }}
           sudo chmod 0777 /etc/resolv.conf
@@ -53,7 +53,7 @@ jobs:
           nameserver 8.8.8.8 
           nameserver 4.4.4.4
           EOF
-          curl -k -L -o "/opt/st/alist-linux-musl-mipsle.tar.gz" "https://github.com/AlistGo/alist/releases/download/$tag/alist-linux-musl-mipsle.tar.gz" 
+          curl -k -L -o "/opt/st/alist-linux-musl-mipsle.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/$tag/alist-linux-musl-mipsle.tar.gz" 
           tar -xzvf /opt/st/alist-linux-musl-mipsle.tar.gz -C /opt/st
           tar -xvf /opt/st/upx-3.95-amd64_linux.tar.xz -C /opt
           chmod 777 /opt/upx-3.95-amd64_linux/upx
@@ -89,7 +89,7 @@ jobs:
           body: |
            > ### ![](https://img.shields.io/badge/%E4%B8%8A%E4%BC%A0%E6%97%B6%E9%97%B4-${{ env.build_time }}-8267?logo=github&labelColor=%E9%A1%BB)![](https://img.shields.io/github/downloads/${{ github.repository }}/${{ needs.check.outputs.ver }}/total?label=%E4%B8%8B%E8%BD%BD%E6%AC%A1%E6%95%B0&logo=github)
 
-           **[官方更新说明](https://github.com/AlistGo/alist/releases)**
+           **[官方更新说明](https://github.com/OpenListTeam/OpenList/releases)**
           tag_name: ${{ needs.check.outputs.ver }}
           files: |
               /opt/st/alist.tar.gz
