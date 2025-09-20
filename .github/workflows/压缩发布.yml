@@ -22,6 +22,7 @@ jobs:
         run: |
           ver=`curl https://api.github.com/repos/OpenListTeam/OpenList/releases/latest | jq -r '.tag_name'`
           cver=`curl https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name'`
+          echo "ver=${ver}"
           echo "ver=${ver}" >> $GITHUB_OUTPUT
           echo "cver=${cver}" >> $GITHUB_OUTPUT
       - name: delete-workflow
