@@ -59,12 +59,10 @@ jobs:
           nameserver 8.8.8.8 
           nameserver 4.4.4.4
           EOF
-          #curl -k -L -o "/opt/st/openlist-linux-musleabihf-armv7l.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/$tag/openlist-linux-musleabihf-armv7l.tar.gz" 
-          curl -k -L -o "/opt/st/alist-linux-musleabihf-armv7l.tar.gz" "https://github.com/AlistGo/alist/releases/download/v3.56.0/alist-linux-musleabihf-armv7l.tar.gz" 
-          tar -xzvf /opt/st/alist-linux-musleabihf-armv7l.tar.gz -C /opt/st
-          #upx --lzma --best openlist
-          #mv openlist alist
-          upx --lzma --best alist
+          #curl -k -L -o "/opt/st/openlist-linux-musleabi-armv5l-lite.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/$tag/openlist-linux-musleabi-armv5l-lite.tar.gz"
+          tar -xzvf /opt/st/openlist-linux-musleabi-armv5l-lite.tar.gz -C /opt/st
+          upx --lzma --best openlist
+          mv openlist alist
           tar czvf alist.tar.gz alist
           echo $(md5sum alist.tar.gz | awk '{print $1;}') >MD5.txt
       - name: 设置机器人
