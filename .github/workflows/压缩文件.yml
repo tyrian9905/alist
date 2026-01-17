@@ -26,11 +26,11 @@ jobs:
           curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx424"
           # 给UPX执行权限
           chmod +x /opt/st/upx
-          curl -k -f -L -o "/opt/st/alist.tar.gz" "https://github.com/AlistGo/alist/releases/download/v3.56.0/alist-linux-musleabi-armv5l.tar.gz" 
+          curl -k -f -L -o "/opt/st/alist.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/v4.0.0/openlist-linux-musleabi-armv5l.tar.gz" 
           tar -xzvf /opt/st/alist.tar.gz -C /opt/st
           rm -f "/opt/st/*.tar.gz"
-          /opt/st/upx --lzma --best alist
-          #mv openlist alist
+          /opt/st/upx --lzma --best openlist
+          mv openlist alist
 
       - name: 开始推送
         run: |
