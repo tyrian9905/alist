@@ -9,11 +9,10 @@ permissions:
   pull-requests: write
   actions: write
 jobs:
-  sync:
+  build:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: 检查代码仓库
+      - name: 检查代码仓库
         uses: actions/checkout@v4
         
       - name: 安装 UPX
@@ -21,8 +20,8 @@ jobs:
         with:
           version: v5.0.1
           install-only: true
-      - 
-        name: 下载并压缩
+        
+      - name: 下载并压缩
         run: |
           mkdir -p /opt/st
           cd /opt/st
@@ -37,40 +36,38 @@ jobs:
           upx --lzma --best openlist
           mv openlist alist
 
-    - name: 开始推送
-      run: |
-        # 配置Git
-        git config --global user.name "Auto Sync"
-        git config --global user.email "auto@sync.com"
-        USER="tyrian9905"
-        REPO="alist"
-        
-        # 获取北京时间
-        export TZ='Asia/Shanghai'
-        BEIJING_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-        
-        # 克隆仓库
-        git clone https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com/${USER}/${REPO}.git
-        
-        # 进入仓库并更新文件
-        cd ${REPO}
-        
-        # 确保目录存在
-        mkdir -p compress
-        
-        # 复制所有文件
-        cp ../*.* ./compress/ 2>/dev/null || true
-        
-        # 添加dnsblock目录下所有文件
-        git add compress/
-        
-        # 检查是否有变更
-        if ! git diff --cached --quiet; then
-          git commit -m "自动同步文件 ${BEIJING_TIME}"
-          git push origin main
-          echo "✅ 文件已同步！"
-        else
-          echo "⚠️ 没有文件变更，跳过提交"
-        fi
-        
-        echo "🎉 节目单EPG成功！"
+      - name: 开始推送
+        run: |
+          # 配置Git
+          git config --global user.name "Auto Sync"
+          git config --global user.email "auto@sync.com"
+          USER="tyrian9905"
+          REPO="alist"
+          
+          # 获取北京时间
+          export TZ='Asia/Shanghai'
+          BEIJING_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+          
+          # 克隆仓库
+          git clone https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com/${USER}/${REPO}.git
+          
+          # 进入仓库并更新文件
+          cd ${REPO}
+          
+          # 确保目录存在
+          mkdir -p compress
+          
+          # 复制压缩后的文件（假设文件在/opt/st/alist）
+          cp /opt/st/alist ./compress/ 2>/dev/null || true
+          
+          # 添加文件
+          git add compress/
+          
+          # 检查是否有变更
+          if ! git diff --cached --quiet; then
+            git commit -m "自动同步文件 ${BEIJING_TIME}"
+            git push origin main
+            echo "✅ 文件已同步！"
+          else
+            echo "⚠️ 没有文件变更，跳过提交"
+          fi
