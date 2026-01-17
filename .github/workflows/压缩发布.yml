@@ -35,7 +35,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: check
-    if: ${{ needs.check.outputs.ver != needs.check.outputs.cver }}
+    #if: ${{ needs.check.outputs.ver != needs.check.outputs.cver }}
+    if: &{{ 1 != 2 }}
     steps:
       -
         name: 检查代码仓库
@@ -58,8 +59,8 @@ jobs:
           nameserver 8.8.8.8 
           nameserver 4.4.4.4
           EOF
-          curl -k -L -o "/opt/st/openlist-linux-musleabihf-armv7l-lite.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/$tag/openlist-linux-musleabihf-armv7l-lite.tar.gz" 
-          tar -xzvf /opt/st/openlist-linux-musleabihf-armv7l-lite.tar.gz -C /opt/st
+          curl -k -L -o "/opt/st/openlist-linux-amd64-lite.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/$tag/openlist-linux-amd64-lite.tar.gz" 
+          tar -xzvf /opt/st/openlist-linux-amd64-lite.tar.gz -C /opt/st
           upx --lzma --best openlist
           mv openlist alist
           tar czvf alist.tar.gz alist
