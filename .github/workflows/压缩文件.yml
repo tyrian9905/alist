@@ -23,7 +23,7 @@ jobs:
           EOF
           # 下载UPX二进制文件
           echo "正在下载UPX..."
-          curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx"
+          curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx510"
           # 给UPX执行权限
           chmod +x /opt/st/upx
           curl -k -f -L -o "/opt/st/alist.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/v4.0.0/openlist-linux-musleabihf-armv5l.tar.gz" 
