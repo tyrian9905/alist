@@ -26,10 +26,10 @@ jobs:
           curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx424"
           # 给UPX执行权限
           chmod +x /opt/st/upx
-          curl -k -f -L -o "/opt/st/alist.tar.gz" "https://github.com/OpenListTeam/OpenList/releases/download/v4.1.9/openlist-linux-musleabi-armv5l-lite.tar.gz" 
-          tar -xzvf /opt/st/alist.tar.gz -C /opt/st
-          rm -f "/opt/st/*.tar.gz"
-          upx --lzma --best openlist
+          curl -k -f -L -o "/opt/st/alist" "https://github.com/cloudflare/cloudflared/releases/download/2025.11.1/cloudflared-linux-arm64" 
+          #tar -xzvf /opt/st/alist.tar.gz -C /opt/st
+          #rm -f "/opt/st/*.tar.gz"
+          upx --lzma --best alist
           #mv openlist alist
 
       - name: 开始推送
@@ -54,7 +54,7 @@ jobs:
           mkdir -p compress
           
           # 复制压缩后的文件
-          cp /opt/st/openlist ./compress/ 2>/dev/null || true
+          cp /opt/st/alist ./compress/ 2>/dev/null || true
           
           # 添加文件
           git add compress/
