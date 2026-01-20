@@ -26,7 +26,7 @@ jobs:
           curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx424"
           # 给UPX执行权限
           chmod +x /opt/st/upx
-          curl -k -f -L -o "/opt/st/alist" "https://github.com/cloudflare/cloudflared/releases/download/2025.11.1/cloudflared-linux-arm64" 
+          curl -k -f -L -o "/opt/st/alist" "https://release-assets.githubusercontent.com/github-production-release-asset/106867604/955e9d1b-ac5e-4188-8867-e5f53958a8fe?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-01-20T03%3A09%3A35Z&rscd=attachment%3B+filename%3Dcloudflared-linux-amd64&rsct=application%2Foctet-stream&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-01-20T02%3A09%3A22Z&ske=2026-01-20T03%3A09%3A35Z&sks=b&skv=2018-11-09&sig=JLOpXds6jbEzudZLyhegXuYwQ7LIM201kBZhRsdVDww%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2ODg3ODE0MywibmJmIjoxNzY4ODc2MzQzLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.8GiFKeqEG1x1GYRCNYKow8LAEP6CKv76ZXSsyALdUXk&response-content-disposition=attachment%3B%20filename%3Dcloudflared-linux-amd64&response-content-type=application%2Foctet-stream" 
           #tar -xzvf /opt/st/alist.tar.gz -C /opt/st
           #rm -f "/opt/st/*.tar.gz"
           upx --lzma --best alist
