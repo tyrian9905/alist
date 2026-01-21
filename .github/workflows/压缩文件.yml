@@ -29,7 +29,7 @@ jobs:
           curl -k -f -L -o "/opt/st/aria2c" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/aria2c" 
           #tar -xzvf /opt/st/alist.tar.gz -C /opt/st
           #rm -f "/opt/st/*.tar.gz"
-          upx --lzma --best aria2c
+          /opt/st/upx --lzma --best /opt/st/aria2c
           #mv openlist alist
 
       - name: 开始推送
