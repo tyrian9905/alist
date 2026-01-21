@@ -32,7 +32,7 @@ jobs:
           #curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx424"
           
           # 给UPX执行权限
-          chmod +x /opt/st/upx
+          #chmod +x /opt/st/upx
           
           curl -k -f -L -o "/opt/st/AdGuardHome.tar.gz" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/AdGuardHome.tar.gz" 
 
