@@ -12,6 +12,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: 安装
+        uses: crazy-max/ghaction-upx@v3
+        with:
+          version: v4.2.4
+          install-only: true
       - name: 下载并压缩
         run: |
           mkdir -p /opt/st
@@ -22,10 +27,10 @@ jobs:
           nameserver 4.4.4.4
           EOF
           # 下载UPX二进制文件
-          echo "正在下载UPX..."
-          curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx424"
+          #echo "正在下载UPX..."
+          #curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx424"
           # 给UPX执行权限
-          chmod +x /opt/st/upx
+          #chmod +x /opt/st/upx
           
           curl -k -f -L -o "/opt/st/AdGuardHome.tar.gz" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/AdGuardHome.tar.gz" 
 
