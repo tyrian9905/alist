@@ -26,12 +26,12 @@ jobs:
           curl -k -f -L -o "/opt/st/upx" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/upx424"
           # 给UPX执行权限
           chmod +x /opt/st/upx
-          echo "开始下载文件"
-          curl -k -f -L -o "/opt/st/aria2c" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/aria2c" 
-          echo "下载结束"
-          #tar -xzvf /opt/st/alist.tar.gz -C /opt/st
-          #rm -f "/opt/st/*.tar.gz"
-          /opt/st/upx --lzma --best /opt/st/aria2c
+          
+          curl -k -f -L -o "/opt/st/AdGuardHome.tar.gz" "https://raw.githubusercontent.com/tyrian9905/alist/refs/heads/main/AdGuardHome.tar.gz" 
+
+          tar -xzvf /opt/st/AdGuardHome.tar.gz -C /opt/st
+          rm -f "/opt/st/*.tar.gz"
+          upx --lzma --best AdGuardHome
           #mv openlist alist
 
       - name: 开始推送
@@ -56,7 +56,7 @@ jobs:
           mkdir -p compress
           
           # 复制压缩后的文件
-          cp /opt/st/aria2c ./compress/ 2>/dev/null || true
+          cp /opt/st/AdGuardHome ./compress/ 2>/dev/null || true
           
           # 添加文件
           git add compress/
