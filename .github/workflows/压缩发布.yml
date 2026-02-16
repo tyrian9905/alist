@@ -76,7 +76,7 @@ jobs:
         run: |
           [ ! -d "install/${{ needs.check.outputs.ver }}" ] && mkdir -p "install/${{ needs.check.outputs.ver }}"
           cp -rf /opt/st/openlist.tar.gz "install/${{ needs.check.outputs.ver }}/openlist.tar.gz"
-          cp -rf /opt/st/alist "install/${{ needs.check.outputs.ver }}/openlist"
+          cp -rf /opt/st/openlist "install/${{ needs.check.outputs.ver }}/openlist"
           echo $(md5sum /opt/st/openlist | awk '{print $1;}') >"install/${{ needs.check.outputs.ver }}/MD5.txt"
           git add .
           git commit -am "${{ needs.check.outputs.ver }} 更新时间： $(date '+%Y-%m-%d %H:%M:%S')"
